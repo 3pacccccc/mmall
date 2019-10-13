@@ -13,16 +13,16 @@ public interface IUserService {
     ServerResponse<String> checkValid(String str, String type);
 
     ServerResponse<String> selectQuestion(String username);
-
-    ServerResponse<String> checkAnswer(String username, String question, String answer);
-
-    ServerResponse<String> forgetResetPassword(String username, String newPassword, String forgetToken);
-
-    ServerResponse<String> ResetPassword(String oldPassworod, String newPassword, User user);
-
-    ServerResponse<User> updateInformation(User user);
-
-    ServerResponse<User> getInformation(Integer id);
-
-    ServerResponse checkAdminRole(HttpSession session);
+//
+//    ServerResponse<String> checkAnswer(String username, String question, String answer);
+//
+//    ServerResponse<String> forgetResetPassword(String username, String newPassword, String forgetToken);
+//
+//    ServerResponse<String> ResetPassword(String oldPassworod, String newPassword, User user);
+//
+//    ServerResponse<User> updateInformation(User user);
+//
+//    ServerResponse<User> getInformation(Integer id);
+//
+//    ServerResponse checkAdminRole(HttpSession session);
 }
