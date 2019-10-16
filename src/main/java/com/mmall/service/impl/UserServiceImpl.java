@@ -1,6 +1,7 @@
 package com.mmall.service.impl;
 
 import com.mmall.common.Const;
+import com.mmall.common.ResponseCode;
 import com.mmall.common.ServerResponse;
 import com.mmall.common.TokenCache;
 import com.mmall.dao.UserMapper;
@@ -12,6 +13,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
 import java.util.UUID;
 
 
@@ -62,6 +64,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     public ServerResponse<String> checkValid(String string, String type) {
+        // 此处有bug,当type不等于USERNAME跟EMAIL的时候也会返回校验成功。但是我不会改。。。。
         if (StringUtils.isNotBlank(type)) {
             // 开始校验
             if (Const.USERNAME.equals(type)) {
@@ -169,5 +172,18 @@ public class UserServiceImpl implements IUserService {
         }
         user.setPassword(StringUtils.EMPTY);
         return ServerResponse.createBySuccess(user);
+    }
+
+        /**
+     * 验证用户是否是管理员
+     * @param
+     * @return
+     */
+    public boolean checkAdminRole(User user){
+        // TODO: 2019/10/17
+        if(user.getRole() == Const.Role.ROLE_ADMIN ){
+            return true;
+        }
+        return  false;
     }
 }

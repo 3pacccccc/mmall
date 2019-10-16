@@ -3,8 +3,10 @@ package com.mmall.service;
 import com.mmall.common.ServerResponse;
 import com.mmall.pojo.User;
 
+import javax.servlet.http.HttpSession;
+
 public interface IUserService {
-    ServerResponse<User> login(String userName, String password);
+    ServerResponse<User> login(String username, String password);
 
     ServerResponse<String> register(User user);
 
@@ -22,5 +24,5 @@ public interface IUserService {
 
     ServerResponse<User> getInformation(Integer id);
 
-//    ServerResponse checkAdminRole(HttpSession session);
+    boolean checkAdminRole(User user);
 }
