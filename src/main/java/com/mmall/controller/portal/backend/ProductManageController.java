@@ -23,8 +23,8 @@ public class ProductManageController {
         if ( user == null){
             return ServerResponse.createByErrorMessage(ResponseCode.NEED_LOGIN.getCode(), "用户未登陆");
         }
-        if (iUserService.checkAdminRole(user)){
-
+        if (iUserService.checkAdminRole(user).isSuccess()){
+            return null;
         }else{
             return ServerResponse.createByErrorMessage("无权限操作");
         }

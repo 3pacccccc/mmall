@@ -179,11 +179,10 @@ public class UserServiceImpl implements IUserService {
      * @param
      * @return
      */
-    public boolean checkAdminRole(User user){
-        // TODO: 2019/10/17
-        if(user.getRole() == Const.Role.ROLE_ADMIN ){
-            return true;
+    public ServerResponse checkAdminRole(User user){
+        if (user != null && user.getRole().intValue() == Const.Role.ROLE_ADMIN){
+            return ServerResponse.createBySuccess();
         }
-        return  false;
+        return ServerResponse.createByError();
     }
 }
