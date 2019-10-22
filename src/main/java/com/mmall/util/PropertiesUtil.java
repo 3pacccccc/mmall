@@ -25,18 +25,21 @@ public class PropertiesUtil {
         }
     }
     public static String getProperty(String key){
-       String value =  pops.getProperty(key);
+       String value =  pops.getProperty(key.trim());
        if(StringUtils.isBlank(value)){
            return  null;
        }
-       return  value;
+       return  value.trim();
     }
 
     public  static String getProperty (String key , String defaultValue){
-        String value = pops.getProperty(key,defaultValue);
-        return value;
+//        String value = pops.getProperty(key,defaultValue);
+//        return value;
+
+        String value = pops.getProperty(key.trim());
+        if (StringUtils.isBlank(value)) {
+            value = defaultValue;
+        }
+        return value.trim();
     }
-
-
-
 }
