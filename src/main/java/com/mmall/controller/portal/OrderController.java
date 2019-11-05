@@ -8,8 +8,10 @@ import com.google.common.collect.Maps;
 import com.mmall.common.Const;
 import com.mmall.common.ResponseCode;
 import com.mmall.common.ServerResponse;
+import com.mmall.dao.CartMapper;
 import com.mmall.pojo.User;
 import com.mmall.service.IOrderService;
+import net.sf.jsqlparser.schema.Server;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,19 @@ public class OrderController {
 
     @Autowired
     private IOrderService iOrderService;
+
+    @Autowired
+    private CartMapper cartMapper;
+
+    @RequestMapping("create.do")
+    @ResponseBody
+    public ServerResponse create(HttpSession session, Integer shippingId){
+        User user = (User) session.getAttribute(Const.CURRENT_USER);
+        if (user == null) {
+            return ServerResponse.createByErrorMessage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());
+        }
+
+    }
 
     @RequestMapping("pay.do")
     @ResponseBody
