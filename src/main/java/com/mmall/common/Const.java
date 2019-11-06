@@ -79,6 +79,15 @@ public class Const {
         public void setCode(int code) {
             this.code = code;
         }
+
+        public static OrderStatusEnum codeOf(int code) {
+            for (OrderStatusEnum orderStatusEnum : values()) {     // todo 这个values是什么鬼？
+                if (orderStatusEnum.getCode() == code) {
+                    return orderStatusEnum;
+                }
+            }
+            throw new RuntimeException("没有找到对应的枚举");
+        }
     }
 
     public interface AlipayCallback {
@@ -142,5 +151,14 @@ public class Const {
         public void setCode(int code) {
             this.code = code;
         }
-}
+
+        public static PaymentTypeEnum codeOf(int code) {
+            for (PaymentTypeEnum paymentTypeEnum : values()) {     // todo 这个values是什么鬼？
+                if (paymentTypeEnum.getCode() == code) {
+                    return paymentTypeEnum;
+                }
+            }
+            throw new RuntimeException("没有找到对应的枚举");
+        }
+    }
 }
